@@ -3690,8 +3690,8 @@ static void uvedit_unwrap_cube_project(const Scene *scene,
 
     BM_ITER_ELEM (l, &liter, efa, BM_LOOPS_OF_FACE) {
       float *luv = BM_ELEM_CD_GET_FLOAT_P(l, offsets.uv);
-      luv[0] = 0.5f + ((l->v->co[cox] - loc[cox]) / cube_size);
-      luv[1] = 0.5f + ((l->v->co[coy] - loc[coy]) / cube_size);
+      luv[0] = 0.5f + 0.5f * cube_size * (l->v->co[cox] - loc[cox]);
+      luv[1] = 0.5f + 0.5f * cube_size * (l->v->co[coy] - loc[coy]);
     }
   }
 }
